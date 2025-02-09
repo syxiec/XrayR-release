@@ -42,7 +42,7 @@ else
   echo -e "  Không phát hiện được giản đồ, hãy sử dụng lược đồ mặc định: ${arch}${plain}"
 fi
 
-echo "  Ngành kiến ​​trúc: ${arch}"
+echo "  admin 4gquocte.com setup: ${arch}"
 
 if [ "$(getconf WORD_BIT)" != '32' ] && [ "$(getconf LONG_BIT)" != '64' ] ; then
     echo "  Phần mềm này không hỗ trợ hệ thống 32-bit (x86), vui lòng sử dụng hệ thống 64-bit (x86_64), nếu phát hiện sai, vui lòng liên hệ với tác giả"
@@ -183,119 +183,27 @@ install_XrayR() {
     ln -s /usr/bin/XrayR /usr/bin/xrayr # chữ thường tương thích
     chmod +x /usr/bin/xrayr
     echo -e ""
-    echo "------------[Đậu Đậu việt hóa]------------"
-    echo "  Cách sử dụng tập lệnh quản lý XrayR: "
+    echo "------------[Bản Quyền 4G QUốc Tế.Com]------------"
+    echo "  Cách sử dụng tập lệnh quản lý XrayR (tương thích với thực thi xrayr, không phân biệt chữ hoa chữ thường): "
     echo "------------------------------------------"
-    echo "  XrayR              - Hiển thị menu quản trị (nhiều chức năng hơn) "
-    echo "  XrayR start        - Khởi động XrayR "
-    echo "  XrayR stop         - Dừng XrayR"
-    echo "  XrayR restart      - Khởi động lại XrayR"
-    echo "  XrayR status       - Xem trạng thái XrayR"
-    echo "  XrayR enable       - Bật tự động khởi động XrayR"
-    echo "  XrayR disable      - Hủy tự động khởi động XrayR"
-    echo "  XrayR log          - Xem nhật ký XrayR"
-    echo "  XrayR update       - Cập nhật XrayR"
-    echo "  XrayR update x.x.x - Cập nhật phiên bản XrayR"
-    echo "  XrayR install      - Cài đặt XrayR"
-    echo "  XrayR uninstall    - Gỡ cài đặt XrayR "
-    echo "  XrayR version      - Xem phiên bản XrayR"
+    echo "  XrayR                    - Hiển thị menu quản lý (với nhiều chức năng hơn)"
+    echo "  XrayR start              - Khởi động XrayR"
+    echo "  XrayR stop               - Dừng XrayR"
+    echo "  XrayR restart            - Khởi động lại XrayR"
+    echo "  XrayR status             - Xem trạng thái XrayR"
+    echo "  XrayR enable             - Đặt XrayR để bắt đầu tự động"
+    echo "  XrayR disable            - Hủy tự động khởi động XrayR"
+    echo "  XrayR log                - Xem nhật ký XrayR"
+    echo "  XrayR update             - Cập nhật XrayR"
+    echo "  XrayR update x.x.x       - Cập nhật phiên bản được chỉ định XrayR"
+    echo "  XrayR config             - hiển thị nội dung tệp cấu hình"
+    echo "  XrayR install            - Cài đặt XrayR"
+    echo "  XrayR uninstall          - Gỡ cài đặt XrayR"
+    echo "  XrayR version            - Xem các phiên bản XrayR"
     echo "------------------------------------------"
 }
-clear
-show_menu() {
-    echo -e ""
-    echo -e "
-    Các tập lệnh quản lý XrayR，không hoạt động với docker${plain}
-${green}------ [Đậu Đậu việt hóa] ------${plain}
-    0. Chỉnh sửa tệp cấu hình
-————————————————————————————————
-    1. Cài đặt XrayR
-    2. Cập nhật XrayR
-    3. Gỡ cài đặt XrayR
-————————————————————————————————
-    4. Khởi động XrayR
-    5. Dừng XrayR
-    6. Khởi động lại XrayR
-    7. Xem trạng thái XrayR
-    8. Xem nhật ký XrayR
-————————————————————————————————
-    9. Bật tự động khởi động XrayR 
-   10. Hủy tự động khởi động XrayR
-————————————————————————————————
-   11. Cài đặt bbr (hạt nhân mới nhất)
-   12. Xem phiên bản XrayR
-   13. Nâng cấp Tập lệnh XrayR
-————————————————————————————————   
- "
- #Các bản cập nhật tiếp theo có thể được thêm vào chuỗi trên
-    show_status
-    echo && read -p "  Vui lòng nhập một lựa chọn [0-13]: " num
 
-    case "${num}" in
-        0) config
-        ;;
-        1) check_uninstall && install
-        ;;
-        2) check_install && update
-        ;;
-        3) check_install && uninstall
-        ;;
-        4) check_install && start
-        ;;
-        5) check_install && stop
-        ;;
-        6) check_install && restart
-        ;;
-        7) check_install && status
-        ;;
-        8) check_install && show_log
-        ;;
-        9) check_install && enable
-        ;;
-        10) check_install && disable
-        ;;
-        11) install_bbr
-        ;;
-        12) check_install && show_XrayR_version
-        ;;
-        13) update_shell
-        ;;
-        *) echo -e "  Vui lòng nhập số chính xác [0-13]${plain}"
-        ;;
-    esac
-}
-
-
-if [[ $# > 0 ]]; then
-    case $1 in
-        "start") check_install 0 && start 0
-        ;;
-        "stop") check_install 0 && stop 0
-        ;;
-        "restart") check_install 0 && restart 0
-        ;;
-        "status") check_install 0 && status 0
-        ;;
-        "enable") check_install 0 && enable 0
-        ;;
-        "disable") check_install 0 && disable 0
-        ;;
-        "log") check_install 0 && show_log 0
-        ;;
-        "update") check_install 0 && update 0 $2
-        ;;
-        "config") config $*
-        ;;
-        "install") check_uninstall 0 && install 0
-        ;;
-        "uninstall") check_install 0 && uninstall 0
-        ;;
-        "version") check_install 0 && show_XrayR_version 0
-        ;;
-        "update_shell") update_shell
-        ;;
-        *) show_usage
-    esac
-else
-    show_menu
-fi
+echo -e "  bắt đầu cài đặt ${plain}"
+install_base
+install_acme
+install_XrayR $1
