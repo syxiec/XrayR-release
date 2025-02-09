@@ -28,7 +28,7 @@ elif cat /proc/version | grep -Eqi "ubuntu"; then
 elif cat /proc/version | grep -Eqi "centos|red hat|redhat"; then
     release="centos"
 else
-    echo -e "  Phiên bản hệ thống không được phát hiện, vui lòng liên hệ với 4gquocte.com！${plain}\n" && exit 1
+    echo -e "  Phiên bản hệ thống không được phát hiện, vui lòng liên hệ với tác giả kịch bản！${plain}\n" && exit 1
 fi
 
 arch=$(arch)
@@ -42,7 +42,7 @@ else
   echo -e "  Không phát hiện được giản đồ, hãy sử dụng lược đồ mặc định: ${arch}${plain}"
 fi
 
-echo "  admin 4gquocte.com setup: ${arch}"
+echo "  Ngành kiến ​​trúc: ${arch}"
 
 if [ "$(getconf WORD_BIT)" != '32' ] && [ "$(getconf LONG_BIT)" != '64' ] ; then
     echo "  Phần mềm này không hỗ trợ hệ thống 32-bit (x86), vui lòng sử dụng hệ thống 64-bit (x86_64), nếu phát hiện sai, vui lòng liên hệ với tác giả"
@@ -156,7 +156,7 @@ install_XrayR() {
     if [[ ! -f /etc/XrayR/config.yml ]]; then
         cp config.yml /etc/XrayR/
         echo -e ""
-        echo -e "  Cài đặt mới, vui lòng truy cập：https://zalo.me/g/apibgy791，ibox ngay nội dung cần thiết"
+        echo -e "  Cài đặt mới, vui lòng tham khảo hướng dẫn trước：https://github.com/XrayR-project/XrayR，Định cấu hình nội dung cần thiết"
     else
         systemctl start XrayR
         sleep 2
@@ -183,23 +183,23 @@ install_XrayR() {
     ln -s /usr/bin/XrayR /usr/bin/xrayr # chữ thường tương thích
     chmod +x /usr/bin/xrayr
     echo -e ""
-    echo "------------[Bản Quyền By:4gquocte.com]------------"
+    echo "------------[Tài]------------"
     echo "  Cách sử dụng tập lệnh quản lý XrayR (tương thích với thực thi xrayr, không phân biệt chữ hoa chữ thường): "
     echo "------------------------------------------"
-    echo "  1.XrayR                    - Hiển thị menu quản lý (với nhiều chức năng hơn)"
-    echo "  2.XrayR start              - Khởi động XrayR"
-    echo "  3.XrayR stop               - Dừng XrayR"
-    echo "  4.XrayR restart            - Khởi động lại XrayR"
-    echo "  5.XrayR status             - Xem trạng thái XrayR"
-    echo "  6.XrayR enable             - Đặt XrayR để bắt đầu tự động"
-    echo "  7.XrayR disable            - Hủy tự động khởi động XrayR"
-    echo "  8.XrayR log                - Xem nhật ký XrayR"
-    echo "  9.XrayR update             - Cập nhật XrayR"
-    echo "  10.XrayR update x.x.x       - Cập nhật phiên bản được chỉ định XrayR"
-    echo "  11.XrayR config             - hiển thị nội dung tệp cấu hình"
-    echo "  12.XrayR install            - Cài đặt XrayR"
-    echo "  13.XrayR uninstall          - Gỡ cài đặt XrayR"
-    echo "  14.XrayR version            - Xem các phiên bản XrayR"
+    echo "  XrayR                    - Hiển thị menu quản lý (với nhiều chức năng hơn)"
+    echo "  XrayR start              - Khởi động XrayR"
+    echo "  XrayR stop               - Dừng XrayR"
+    echo "  XrayR restart            - Khởi động lại XrayR"
+    echo "  XrayR status             - Xem trạng thái XrayR"
+    echo "  XrayR enable             - Đặt XrayR để bắt đầu tự động"
+    echo "  XrayR disable            - Hủy tự động khởi động XrayR"
+    echo "  XrayR log                - Xem nhật ký XrayR"
+    echo "  XrayR update             - Cập nhật XrayR"
+    echo "  XrayR update x.x.x       - Cập nhật phiên bản được chỉ định XrayR"
+    echo "  XrayR config             - hiển thị nội dung tệp cấu hình"
+    echo "  XrayR install            - Cài đặt XrayR"
+    echo "  XrayR uninstall          - Gỡ cài đặt XrayR"
+    echo "  XrayR version            - Xem các phiên bản XrayR"
     echo "------------------------------------------"
 }
 
